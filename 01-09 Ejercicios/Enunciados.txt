@@ -1,0 +1,98 @@
+Para reforzar los conceptos de **variables**, **tipos de datos**, **objetos**, **arreglos** y **funciones** de tu curso, aquí tienes cuatro ejercicios complejos que combinan estos temas. La clave es pensar en cómo se interconectan las estructuras de datos con las funciones para resolver un problema.
+
+-----
+
+## Ejercicio 1: Gestión de una Tienda de Libros 📚
+
+**Objetivo:** Crear un sistema simple para una tienda de libros, manejando el inventario, ventas y autores.
+
+1.  **Crea una función `crearLibro`** que acepte el `titulo`, `autor` (un objeto con `nombre` y `pais`), `precio` y `stock` como argumentos. La función debe retornar un objeto con estas propiedades.
+2.  **Crea un arreglo llamado `inventario`** y agrega al menos 4 libros usando la función `crearLibro`.
+3.  **Crea una función `venderLibro`** que reciba el `titulo` del libro a vender y la `cantidad`. Esta función debe:
+      * Buscar el libro en el `inventario`.
+      * Verificar si hay suficiente `stock`.
+      * Si hay stock, decrementar la cantidad vendida del `stock` del libro y retornar un mensaje de éxito con el total a pagar.
+      * Si no hay stock, retornar un mensaje de error.
+4.  **Crea una función `buscarPorAutor`** que reciba el `nombre` del autor y retorne un nuevo arreglo con todos los libros de ese autor.
+
+**Ejemplo de uso:**
+
+```javascript
+let inventario = [
+  // ... libros creados con la función
+];
+
+venderLibro("El Señor de los Anillos", 2); // Debería restar 2 del stock
+console.log(buscarPorAutor("J.R.R. Tolkien")); // Debería mostrar todos sus libros
+```
+
+-----
+
+## Ejercicio 2: Sistema de Citas Médicas 🩺
+
+**Objetivo:** Desarrollar un sistema para gestionar citas médicas, combinando objetos y arreglos.
+
+1.  **Define un objeto `paciente`** con propiedades como `nombre`, `edad`, y un arreglo `historialMedico` que inicialmente esté vacío.
+2.  **Define un objeto `medico`** con `nombre`, `especialidad` y un arreglo `citas` que también esté vacío.
+3.  **Crea una función `agendarCita`** que tome un objeto `medico`, un objeto `paciente`, una `fecha` y un `motivo`. La función debe agregar un nuevo objeto `cita` (con `paciente`, `fecha` y `motivo`) al arreglo `citas` del `medico`.
+4.  **Crea una función `consultarHistorial`** que reciba un objeto `paciente` y un `medico`. La función debe recorrer las citas del médico y, si el paciente está en una de ellas, agregar un nuevo objeto (`{medico: medico.nombre, fecha: cita.fecha, motivo: cita.motivo}`) al `historialMedico` del paciente.
+
+**Ejemplo de uso:**
+
+```javascript
+let drSmith = { nombre: "Dr. Smith", especialidad: "Cardiólogo", citas: [] };
+let juan = { nombre: "Juan", edad: 45, historialMedico: [] };
+
+agendarCita(drSmith, juan, "2025-12-25", "Dolor de pecho");
+
+consultarHistorial(juan, drSmith);
+console.log(juan.historialMedico);
+```
+
+-----
+
+## Ejercicio 3: Calculadora de Estadísticas para Arreglos 📈
+
+**Objetivo:** Crear funciones que realicen cálculos estadísticos sobre un arreglo de números, combinando bucles y lógica.
+
+1.  **Crea una función `calcularPromedio`** que reciba un arreglo de números. La función debe sumar todos los elementos y devolver el promedio. Si el arreglo está vacío, debe retornar 0.
+2.  **Crea una función `encontrarExtremos`** que reciba un arreglo de números. La función debe devolver un objeto con las propiedades `minimo` y `maximo` con los valores correspondientes. Puedes usar un bucle `for` o `for...of`.
+3.  **Crea una función `contarParesImpares`** que reciba un arreglo de números. La función debe devolver un objeto con las propiedades `pares` e `impares`, conteniendo la cantidad de cada tipo.
+
+**Ejemplo de uso:**
+
+```javascript
+let numeros = [5, 12, 3, 40, 8, 15];
+
+console.log(calcularPromedio(numeros)); // Debería ser 13.83
+console.log(encontrarExtremos(numeros)); // Debería ser { minimo: 3, maximo: 40 }
+console.log(contarParesImpares(numeros)); // Debería ser { pares: 3, impares: 3 }
+```
+
+-----
+
+## Ejercicio 4: Sistema de Inventario para un Videojuego 🕹️
+
+**Objetivo:** Simular un sistema de inventario de un personaje en un videojuego usando objetos anidados y arreglos.
+
+1.  **Crea una función `crearItem`** que reciba un `nombre`, `tipo` (por ejemplo, "arma", "pocion", "armadura") y `stats` (un objeto con propiedades como `ataque`, `defensa`, `curacion`).
+2.  **Crea un objeto `personaje`** con propiedades como `nombre`, `salud`, `ataque` y un arreglo vacío llamado `inventario`.
+3.  **Crea una función `equiparItem`** que reciba el objeto `personaje` y un objeto `item`. La función debe:
+      * Agregar el `item` al arreglo `inventario` del personaje.
+      * Aumentar las `stats` del personaje según el tipo de `item`. Por ejemplo, si es un arma, sumar el `ataque` del `item` al `ataque` del personaje. Si es una poción, sumar la `curacion` a la `salud` del personaje.
+4.  **Crea una función `mostrarInventario`** que reciba el objeto `personaje` y recorra su `inventario` para mostrar una lista de los items que tiene.
+
+**Ejemplo de uso:**
+
+```javascript
+let link = { nombre: "Link", salud: 100, ataque: 10, inventario: [] };
+
+let espada = crearItem("Espada Maestra", "arma", { ataque: 30 });
+let pocion = crearItem("Poción de vida", "pocion", { curacion: 50 });
+
+equiparItem(link, espada);
+equiparItem(link, pocion);
+
+console.log(link); // El ataque y la salud de Link deben haber aumentado
+mostrarInventario(link);
+```
