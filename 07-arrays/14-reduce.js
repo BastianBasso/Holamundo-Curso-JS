@@ -22,7 +22,7 @@ Así, puedes acceder a cada usuario por su nombre de forma rápida y eficiente, 
 const usuarios = [
     { edad: 17, nombre: 'Nico' },
     { edad: 13, nombre: 'Chanchito' },
-    { edad: 25, nombre: 'Felipe' },
+    { edad: 25, fnombre: 'Felipe' },
     { edad: 32, nombre: 'Fernanda' },
 ];
 

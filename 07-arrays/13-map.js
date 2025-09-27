@@ -6,7 +6,7 @@ const usuarios = [
 ];  
 // Ver ahora el metodo de map
 
-// map crea un arreglo nuevo en base a la funcion qu le pasemos
+// map crea un arreglo nuevo en base a la funcion que le pasemos
 
 const lista =usuarios.map((u)=>u.nombre);
 console.log(lista);
