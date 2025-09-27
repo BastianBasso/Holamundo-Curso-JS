@@ -26,6 +26,12 @@ if (letras.indexOf(1) !== -1) {
     // El elemento 1 está presente en el array
 }
 
+
+console.log(letras);
+console.log(letras.indexOf(1,3)); // segundo argumentos es apra iniciar la busqueda despues de ese dato
+
+
+
 // Resumen de métodos:
 // - indexOf(valor): primer índice del valor.
 // - lastIndexOf(valor): último índice del valor.
