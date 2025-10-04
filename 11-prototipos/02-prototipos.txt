@@ -1,0 +1,62 @@
+Concepto de herencia en js y prototiposHerencia y Prototipos en JavaScript
+
+¿Qué es un prototipo?
+
+En JavaScript, todos los objetos tienen una propiedad interna llamada [[Prototype]] (accesible como __proto__ en la mayoría de los navegadores).
+El prototipo es otro objeto del cual el objeto actual "hereda" propiedades y métodos.
+
+Si intentas acceder a una propiedad que no existe en el objeto, JavaScript la busca en su prototipo, y así sucesivamente en la cadena de prototipos.
+
+¿Cómo funciona la herencia prototípica?
+
+JavaScript no usa clases tradicionales como otros lenguajes orientados a objetos (aunque desde ES6 existen las clases, internamente siguen usando prototipos).
+
+La herencia se logra enlazando objetos a otros objetos (prototipos).
+Cuando creas un objeto, puedes especificar su prototipo, y ese objeto "hereda" todas las propiedades y métodos del prototipo.
+
+Ejemplo básico:
+
+// Creamos un objeto prototipo
+const animal = {
+  hablar: function() {
+    console.log("Hace un sonido");
+  }
+};
+
+// Creamos un nuevo objeto que hereda de animal
+const perro = Object.create(animal);
+perro.hablar(); // "Hace un sonido"
+
+
+Aquí, perro no tiene su propio método hablar, pero lo hereda de animal gracias al prototipo.
+
+Constructores y prototype
+
+Las funciones constructoras permiten crear múltiples objetos con el mismo prototipo:
+
+function Persona(nombre) {
+  this.nombre = nombre;
+}
+Persona.prototype.saludar = function() {
+  console.log("Hola, soy " + this.nombre);
+};
+
+const juan = new Persona("Juan");
+juan.saludar(); // "Hola, soy Juan"
+
+
+
+Todos los objetos creados con new Persona() comparten el mismo prototipo (Persona.prototype).
+
+Cambiar el prototipo
+
+Puedes cambiar el prototipo de un objeto usando Object.create o asignando a __proto__ (no recomendado para producción).
+
+También puedes extender prototipos para agregar funcionalidades a todos los objetos de un tipo (por ejemplo, Array.prototype.miMetodo = ...).
+
+
+Resumen
+Herencia en JS se basa en prototipos, no en clases.
+Los objetos pueden heredar propiedades y métodos de otros objetos a través de la cadena de prototipos.
+Los constructores y el objeto prototype permiten crear objetos que comparten métodos y propiedades.
+¿Te gustaría ver ejemplos más avanzados o cómo funciona la herencia con las nuevas clases de ES6?

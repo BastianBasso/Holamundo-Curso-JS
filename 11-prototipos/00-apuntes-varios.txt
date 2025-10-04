@@ -1,0 +1,128 @@
+-----
+
+## La Evolución de los Paradigmas de Programación
+
+Un **paradigma de programación** es fundamentalmente una forma o estilo de estructurar y organizar el código. A medida que los programas se volvieron más grandes y complejos, se hizo necesario encontrar mejores maneras de gestionarlos.
+
+### 1\. Programación Imperativa (El Primer Estilo)
+
+En esencia, este paradigma se enfoca en *cómo* la computadora debe cambiar su estado. El código es una secuencia de instrucciones que modifican el estado del programa (los datos).
+
+  * **Tú apunte:** "Todo el código iba de arriba hacia abajo."
+  * **Explicación:** Las primeras formas de programación (como el **lenguaje de máquina** y el **Ensamblador**) eran puramente secuenciales. El programa le decía a la máquina exactamente qué hacer, paso a paso, en un flujo directo y lineal.
+  * **Ejemplo Conceptual:** Imagina una receta de cocina sin sub-recetas. Es un solo y largo listado de pasos.
+  * **Código Simple (Pseudocódigo):**
+
+<!-- end list -->
+
+```
+INICIO
+  Establecer numero_a en 5
+  Establecer numero_b en 10
+  Establecer resultado en 0
+  Hacer que resultado sea numero_a más numero_b
+  Mostrar resultado
+FIN
+```
+
+-----
+
+## Mejorando la Organización: Procedimientos y Estructuras
+
+Cuando los programas crecieron, la programación imperativa pura se volvió un "código espagueti": difícil de leer, mantener y reutilizar. Surgieron dos mejoras clave:
+
+### 2\. Programación Procedural (Orientada a Procedimientos/Funciones)
+
+  * **Tú apunte:** "Se encarga de dividir las aplicaciones en bloques de funciones."
+  * **Explicación:** Este paradigma introduce el concepto de **procedimiento** o **función**. Permite agrupar un conjunto de instrucciones relacionadas en un bloque con nombre (una función) que puede ser llamado desde cualquier parte del programa. Esto mejora la **reutilización de código** y el **orden**.
+  * **Ejemplo Conceptual:** La receta de cocina ahora tiene secciones como "Preparar la masa" y "Hornear el pastel", y puedes llamar a esas secciones cuando las necesites.
+  * **Código Simple (Python/Pseudocódigo):**
+
+<!-- end list -->
+
+```python
+# Un dato separado de la función
+precio_base = 100
+
+# Una función o procedimiento
+def calcular_precio_final(impuesto):
+  precio_con_impuesto = precio_base * (1 + impuesto)
+  return precio_con_impuesto
+
+# Uso de la función
+precio_total = calcular_precio_final(0.19)
+print(precio_total) # Salida: 119.0
+```
+
+### 3\. Programación Estructurada
+
+  * **Tú apunte:** "Tipo de programación orientada a procedimientos, se encarga de separar las funciones de los datos."
+  * **Explicación:** Más que un paradigma totalmente nuevo, es una **disciplina** dentro de la programación procedural. Su objetivo es mejorar la claridad, calidad y tiempo de desarrollo. Se basa en tres estructuras de control principales: **secuencia**, **selección** (estructuras `if`/`else`), y **repetición** (estructuras `for`/`while`). Esto esencialmente elimina el uso del comando `GOTO`, que permitía saltar a cualquier parte del código y era la principal causa del "código espagueti".
+
+-----
+
+## El Salto a la Programación Orientada a Objetos (POO)
+
+Aquí es donde nos enfocamos en el **"porqué" de la POO**.
+
+### La Crisis del Software
+
+Aunque la programación procedural y estructurada ayudaron, los sistemas informáticos seguían creciendo en complejidad (bases de datos, interfaces gráficas, redes). El problema central era:
+
+> **Los datos y las funciones que operaban sobre ellos seguían estando separados.**
+
+A medida que el programa crecía, era fácil que una función modificara un dato de una manera que no era segura o esperada, porque los datos eran **globales** o fácilmente accesibles. Esto hacía que el software fuera frágil y muy difícil de depurar.
+
+### 4\. Programación Orientada a Objetos (POO)
+
+  * **Tú apunte:** "Agrupa los datos y las funcionalidades que tenga sentido agrupar."
+
+  * **Explicación y el PORQUÉ:**
+
+    1.  **Modelar el Mundo Real:** La POO (popularizada por lenguajes como **Smalltalk** y luego **C++** y **Java**) propone modelar conceptos del mundo real (**Objetos**) en el código. Un objeto es una entidad que tiene **estado** (datos/atributos) y **comportamiento** (funciones/métodos).
+    2.  **Encapsulamiento (La Clave):** El gran avance es que **agrupa** los datos y las funciones que los manipulan, y además **limita el acceso directo** a esos datos desde fuera del objeto. Esto se llama **encapsulamiento**. Esto significa que solo las funciones internas del objeto pueden cambiar sus datos, lo que hace que el código sea mucho más **seguro** y **predecible**.
+    3.  **Abstracción:** Se muestran solo las funcionalidades esenciales (ej: `iniciar_sesion()`) y se oculta la complejidad interna (cómo se conecta con la base de datos, cómo se encripta, etc.).
+
+  * **Tu Ejemplo (Mejorado):**
+
+      * **Objeto/Clase:** `Usuario`
+      * **Datos (Atributos):** `nombre`, `correo`, `contraseña` (Oculta)
+      * **Funcionalidades (Métodos):** `iniciar_sesion()`, `cambiar_contraseña()`, `cerrar_sesion()`
+
+  * **Código Simple (Python):**
+
+<!-- end list -->
+
+```python
+# Definición de la CLASE (el "molde")
+class Usuario:
+    # Constructor: Se llama al crear un objeto
+    def __init__(self, nombre, correo, password):
+        self.nombre = nombre       # Atributo
+        self.correo = correo       # Atributo
+        self._password = password  # Atributo (El guion bajo sugiere que es "privado"/encapsulado)
+
+    # Método (funcionalidad)
+    def iniciar_sesion(self, password_ingresada):
+        if self._password == password_ingresada:
+            return f"Bienvenido, {self.nombre}!"
+        else:
+            return "Contraseña incorrecta."
+
+# Creación del OBJETO (la "instancia")
+usuario1 = Usuario("Alice", "alice@mail.com", "mipass123")
+
+# Interacción con el objeto (usando sus métodos)
+print(usuario1.iniciar_sesion("mipass123"))
+# Salida: Bienvenido, Alice!
+
+# Si intentamos acceder al dato encapsulado directamente:
+# print(usuario1._password)  # Se podría, pero el paradigma dice que NO deberías.
+
+# Es mucho más difícil romper el objeto porque el manejo de la contraseña
+# está "protegido" dentro de la clase por el método `iniciar_sesion`.
+```
+
+-----
+
+**En resumen, el *porqué* de la POO es pasar de un estilo de programación donde los datos y las funciones estaban separados y el código era frágil, a uno donde la funcionalidad y los datos están fuertemente ligados dentro de un `Objeto`, mejorando la seguridad, la reutilización y la gestión de la complejidad.**f

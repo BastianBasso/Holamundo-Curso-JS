@@ -1,0 +1,12 @@
+Principios de la oop
+
+- Encapsulacion, agrupacion de elementos de forma que no joda con otros elemntos    
+            -> Agrupar metodos y props
+- Abstraccion :
+    Abstracción (La Interfaz):::	El botón "Enviar". Solo tienes que presionarlo.
+    Detalles Ocultos (La Implementación):::	No ves los miles de pasos que ocurren: la conversión del texto a código binario, la conexión con la antena celular, el uso de protocolos de red (TCP/IP), la validación de la tarjeta SIM, etc.
+
+
+- Herencia , caracteristicas son heredables de clase a clase
+            - Que si tengo un objeto a y b , puedo hacer que el objeto b herede todos los metodos del objeto a
+- Polimorfismo , obtiene una forma en particular en cada situacion
